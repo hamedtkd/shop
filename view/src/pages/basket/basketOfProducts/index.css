@@ -1,0 +1,13 @@
+
+.title{
+    font-size: 1.25rem ;
+    color: #212529;
+  }
+  .title::after{
+    content: " ";
+    display: block;
+    height: .3rem;
+    width: 100%;
+    background-color: #DE2451;
+    border-radius: 5px;
+  }

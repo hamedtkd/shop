@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Yekan';
+  src: url('assets/fonts/Yekan.eot');
+  src: url('assets/fonts/Yekan.eot?#iefix') format('embedded-opentype'),
+      url('assets/fonts/Yekan.woff2') format('woff2'),
+      url('assets/fonts/Yekan.woff') format('woff'),
+      url('assets/fonts/Yekan.otf') format('opentype'),
+      url('assets/fonts/Yekan.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  font-display: auto;
+}
+
+
+*{
+    direction:rtl ;
+    font-family: 'Yekan';
+ 
+}
+
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+ max-width: 1360px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: 540px !important;
+  }
+}
+@media (min-width: 768px) {
+  .container-md, .container-sm, .container {
+    max-width: 720px !important;
+  }
+}
+@media (min-width: 992px) {
+  .container-lg, .container-md, .container-sm, .container {
+    max-width: 960px !important;
+  }
+}
+@media (min-width: 1200px) {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1140px !important;
+  }
+}
+@media (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1320px !important;
+  }
+}

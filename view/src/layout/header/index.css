@@ -1,0 +1,12 @@
+.prouduct-section:hover div{
+    display: block;
+
+}
+.user-section:hover div{
+    display: block;
+
+}
+.dropdown{
+position: absolute; 
+/* top: 1.5rem; */
+}
