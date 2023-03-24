@@ -7,7 +7,18 @@ const handleSearchProducts = async (req, res) => {
     let isProduct = null
     if (searchName === 'product-list') {
         isProduct = await Product.find({})
-    } else {
+    }
+    else if(searchName=== 'most-populer'){
+        isProduct = await Product.find({
+            productTag: 'پرفروشترین'
+        })
+    }   
+    else if(searchName=== 'offer'){
+        isProduct = await Product.find({
+            productTag: searchName
+        })
+    }
+    else {
         isProduct = await Product.find({
             productFamily: searchName
         })

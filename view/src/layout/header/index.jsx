@@ -102,13 +102,13 @@ export const Header = ({ basket }) => {
                                 </div>
                             </li>
                             <li >
-                                <Link className='flex gap-3 items-center' href={'/offers'}>
+                                <Link className='flex gap-3 items-center' to = {`${MainUrl}search/offer`}>
                                     <ReceiptPercentIcon className="h-6 w-6 text-gray-500" />
                                     تخفیف ها و پیشنهاد ما
                                 </Link>
                             </li>
                             <li>
-                                <Link className='flex gap-3 items-center' href={'/most_populer'}>
+                                <Link className='flex gap-3 items-center' to = {`${MainUrl}search/most-populer`}>
                                     <FireIcon className="h-6 w-6 text-gray-500" />
                                     پرفروشترین ها
                                 </Link>
@@ -159,14 +159,14 @@ export const Header = ({ basket }) => {
                             <Sidebar.Item
                                 icon={ReceiptPercentIcon}
                             >
-                                <Link className='flex gap-3 items-center' href={'/offers'}>
+                                <Link className='flex gap-3 items-center' to = {`${MainUrl}search/most-populer`}>
                                     تخفیف ها و پیشنهاد ما
                                 </Link>
                             </Sidebar.Item>
                             <Sidebar.Item
                                 icon={FireIcon}
                             >
-                                <Link className='flex gap-3 items-center' href={'/most_populer'}>
+                                <Link className='flex gap-3 items-center' to = {`${MainUrl}search/most-populer`}>
                                     پرفروشترین ها
                                 </Link>
                             </Sidebar.Item>
