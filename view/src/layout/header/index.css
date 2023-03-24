@@ -1,3 +1,4 @@
+
 .prouduct-section:hover div{
     display: block;
 
@@ -9,4 +10,10 @@
 .dropdown{
 position: absolute; 
 /* top: 1.5rem; */
+}
+.slidebar{
+    position: fixed;
+   
+    height: 100vh;
+    transition: all  .3s;
 }

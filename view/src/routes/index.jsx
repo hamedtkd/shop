@@ -1,4 +1,4 @@
-import { Home, Product, Signin, Signup, CreatSlider,AdminPage, CreatProduct,Basket, User } from "@/pages";
+import { Home, Product, Signin, Signup, CreatSlider,AdminPage, CreatProduct,Basket, User, ProductsList, Search } from "@/pages";
 import { Shipping } from "@/pages/basket/shipping";
 
 
@@ -43,5 +43,14 @@ export const routes={
     SHIPPING:{
         path: '/basket/shipping',
         element: <Shipping />,
-    }
+    },
+    SEARCH: {
+        path: '/search/:searchName',
+        element: <Search />,
+    },
+    // PRODUCTLIST:{
+    //     path: '/search/product-list',
+    //     element: <ProductsList />,
+    // },
+    
 }

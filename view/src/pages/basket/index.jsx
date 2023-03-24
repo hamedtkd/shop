@@ -14,7 +14,10 @@ export const Basket = () => {
         <>
             <Header />
             <BasketOfProduct/>
+            <div className=" max-lg:hidden max-md:hidden max-sm:hidden">
             <Footer />
+
+            </div>
         </>
 
         // <BasketOfProduct/>

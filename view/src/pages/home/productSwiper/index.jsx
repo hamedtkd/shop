@@ -33,28 +33,78 @@ export default function ProdctSwiper({ service, title, tag, ...props }) {
                     {title}
                 </h2>
             </div>
+            <div className='max-lg:hidden max-md:hidden max-sm:hidden'>
+                <Swiper
+                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                    spaceBetween={20}
+                    slidesPerView={4}
+                    autoHeight={true}
+                    navigation
+                    pagination={{ clickable: true }}
+                    // scrollbar={{ draggable: true }}
+                    className="my-10 card "
 
-            <Swiper
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
-                spaceBetween={25}
-                slidesPerView={3}
-                navigation
-                pagination={{ clickable: true }}
-                // scrollbar={{ draggable: true }}
-                className="my-10 card "
+                >
+                    {data?.map((item) => {
+                        return (
+                            <SwiperSlide>
+                                <Card item={item} />
+                            </SwiperSlide>
+                        )
+                    })
+                    }
+                </Swiper>
+            </div>
+            <div className='max-md:block max-sm:hidden max-2xl:hidden max-xl:hidden max-lg:block lg:hidden '>
 
-            >
+                <Swiper
+                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                    spaceBetween={0}
+                    slidesPerView={3}
+                    autoHeight={true}
+                    navigation
+                    pagination={{ clickable: true }}
+                    // scrollbar={{ draggable: true }}
+                    className="my-10 card "
 
-                {data?.map((item) => {
-                    return (
-                        <SwiperSlide>
-                            <Card item={item}/>
-                        </SwiperSlide>
-                    )
-                })
-                }
+                >
 
-            </Swiper>
+                    {data?.map((item) => {
+                        return (
+                            <SwiperSlide>
+                                <Card item={item} />
+                            </SwiperSlide>
+                        )
+                    })
+                    }
+
+                </Swiper>
+            </div>
+            <div className='max-2xl:hidden max-sm:block max-xl:hidden max-lg:hidden lg:hidden'>
+                <Swiper
+                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                    spaceBetween={0}
+                    slidesPerView={2}
+                    autoHeight={true}
+                    navigation
+                    pagination={{ clickable: true }}
+                    // scrollbar={{ draggable: true }}
+                    className="my-10 card "
+
+                >
+
+                    {data?.map((item) => {
+                        return (
+                            <SwiperSlide>
+                                <Card item={item} />
+                            </SwiperSlide>
+                        )
+                    })
+                    }
+
+                </Swiper>
+            </div>
+
         </div>
     );
 };

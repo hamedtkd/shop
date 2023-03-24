@@ -55,14 +55,14 @@ export const BasketOfProduct = () => {
         handelmin,
         handelPluss,
         data, } = useBasket()
-        const navigate = useNavigate()
-        const handleSubmit =()=>{
-            navigate('/basket/shipping')
-        }
+    const navigate = useNavigate()
+    const handleSubmit = () => {
+        navigate('/basket/shipping')
+    }
 
     return (
         <>
-             <main className="container">
+            <main className="container">
                 <div className="pt-3 pe-4 flex border-b mb-6">
                     <p className=" title">سبد خرید</p>
                 </div>
@@ -70,91 +70,130 @@ export const BasketOfProduct = () => {
                     <div>
                         <h1>سبد خرید شما خالی است</h1>
                     </div>
-                    :
-                    <section className="container">
-                        <div className=" flex justify-between gap-3 mt-3 " >
-                            <div className="flex flex-col gap-3  w-3/4  pb-3">
-                                {data?.map((p) => {
-                                    return (
-                                        <div key={p._id} className="flex justify-between border rounded-md  px-3 pb-3  ">
-                                            <div className="flex  gap-4 w-3/4">
-                                                <div className="flex items-center w-1/4 ">
-                                                    <img src={uploadsURL + p.productPicture} alt="عکس محصول" width="100%" />
-                                                </div>
-                                                <div className="flex flex-col gap-3 w-3/4  pt-4">
-                                                    <div className="flex flex-col gap-3 text-dark">
-                                                        <p className=" text-xl"> {p.productName}</p>
-                                                        <p className="text-sm">  {p.productEnglishName}</p>
-                                                        <div className="flex gap-1 items-center">
-                                                            <p className="text-xl">برند : </p>
-                                                            <p className="text-lg"> {p?.productBrand} </p>
+                    : <>
+                        <section className="container">
+                            <div className=" flex justify-between gap-3 mt-3 " >
+                                <div className="flex flex-col gap-3  w-full  pb-3">
+                                    {data?.map((p) => {
+                                        return (
+                                            <div key={p._id} className="flex  border rounded-md  px-3 pb-3  ">
+                                                <div className="w-full flex   ">
+                                                    <div className="flex flex-col items-center justify-between w-1/4  max-md:w-1/2">
+                                                        <div>
+                                                            <img src={uploadsURL + p.productPicture} alt="عکس محصول" width="100%" />
+                                                        </div>
+                                                        <div className="w-28 flex items-center gap-2 border p-2 rounded-md  border-1 mt-4" id="${id}">
+                                                            <button onClick={() => handelPluss(p.productId)} className="border-0 bg-transparent w-1/3" id="plus">+</button>
+                                                            <p className="px-3" id="number">{persianNumber(p.number)}</p>
+                                                            <button onClick={() => handelmin(p.productId)} className="border-0 bg-transparent w-1/3" id="mines">-</button>
                                                         </div>
                                                     </div>
-                                                    <div className="w-1/4 flex items-center gap-2 border p-2 rounded-md  border-1 mt-4" id="${id}">
-                                                        <Button onClick={() => handelPluss(p.productId)} className="border-0 bg-transparent" id="plus">+</Button>
-                                                        <p className="px-3" id="number">{persianNumber(p.number)}</p>
-                                                        <Button onClick={() => handelmin(p.productId)} className="border-0 bg-transparent" id="mines">-</Button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="flex items-end  w-1/4 pb-4">
-                                                <div className="w-full flex flex-col gap-2">
-                                                    <div className="flex justify-between  ">
-                                                        <p>قیمت واحد:</p>
-                                                        <div className="flex gap-1">
-                                                            <p >{persianNumber(p?.productPrice)} </p>
-                                                            <p>تومان </p>
+                                                    <div className="flex flex-col justify-between  gap-3 w-full pt-4">
+                                                        <div className="flex flex-col gap-3 text-dark">
+                                                            <p className=" text-xl"> {p.productName}</p>
+                                                            <p className="text-sm">  {p.productEnglishName}</p>
+                                                            <div className="flex gap-1 items-center">
+                                                                <p className="text-xl">برند : </p>
+                                                                <p className="text-lg"> {p?.productBrand} </p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="w-full justify-items-end flex flex-col gap-2">
+                                                            <div className="flex justify-between flex-wrap  ">
+                                                                <p>قیمت واحد:</p>
+                                                                <div className="flex gap-1">
+                                                                    <p >{persianNumber(p?.productPrice)} </p>
+                                                                    <p>تومان </p>
+                                                                </div>
+
+                                                            </div>
+                                                            <hr />
+                                                            <div className="flex justify-between flex-wrap  ">
+                                                                <p className="text-xl">قیمت نهایی:</p>
+                                                                <div className="flex gap-1">
+                                                                    <p className="text-xl"> {persianNumber((p?.productPrice) * p.number)} </p>
+                                                                    <p>تومان </p>
+                                                                </div>
+                                                            </div>
                                                         </div>
 
                                                     </div>
-                                                    <hr />
-                                                    <div className="flex justify-between  ">
-                                                        <p className="text-xl">قیمت نهایی:</p>
-                                                        <div className="flex gap-1">
-                                                            <p className="text-xl"> {persianNumber((p?.productPrice) * p.number)} </p>
-                                                            <p>تومان </p>
-                                                        </div>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                            <div className="flex w-1/4">
-                                <div className=" flex flex-col gap-3 px-2">
-                                    <div className="border rounded-md px-2 flex flex-col gap-3 text-dark py-3">
-                                        <div className="flex justify-between items-centerr">
-                                            <p className="text-xl"> قیمت کالا ها : </p>
-                                            <p className="text-sm">{persianNumber(finalNum)} تومان</p>
-                                        </div>
-                                        <div className="flex justify-between items-centerr">
-                                            <p className="text-danger text-xl">تخفیف کل:</p>
-                                            <p className="text-sm">{persianNumber(0)} تومان</p>
-                                        </div>
-                                        <hr />
-                                        <div className="flex flex-col gap-2">
-                                            <p className="text-2xl">جمع سبد خرید:</p>
-                                            <p className="text-center text-xl">{persianNumber(finalNum)} تومان</p>
-                                        </div>
-                                        <div className="pt-3">
-                                            <p className="text-center text-sm"> هزینه ارسال برای خریدهای بالای {persianNumber(250)} هزار تومان در Huif shop
-                                                رایگان است، در غیر اینصورت هزینه ارسال به این مبلغ اضافه می شود.</p>
-                                        </div>
-                                        <Button onClick={handleSubmit} className='w-full'>
-                                            ادامه ثبت سفارش
-                                        </Button>
-                                    </div>
-                                    <div>
-                                        <p className="text-dark text-xs ">محصولات موجود در سبد شما ثبت و رزرو نشده اند، برای ثبت سفارش مراحل
-                                            بعدی را تکمیل کنید. </p>
-                                    </div>
 
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                                <div className="flex w-1/4 max-lg:hidden max-md:hidden max-sm:hidden">
+                                    <div className=" flex flex-col gap-3 px-2">
+                                        <div className="border rounded-md px-2 flex flex-col gap-3 text-dark py-3">
+                                            <div className="flex justify-between items-centerr">
+                                                <p className="text-xl"> قیمت کالا ها : </p>
+                                                <p className="text-sm">{persianNumber(finalNum)} تومان</p>
+                                            </div>
+                                            <div className="flex justify-between items-centerr">
+                                                <p className="text-danger text-xl">تخفیف کل:</p>
+                                                <p className="text-sm">{persianNumber(0)} تومان</p>
+                                            </div>
+                                            <hr />
+                                            <div className="flex flex-col gap-2">
+                                                <p className="text-2xl">جمع سبد خرید:</p>
+                                                <p className="text-center text-xl">{persianNumber(finalNum)} تومان</p>
+                                            </div>
+                                            <div className="pt-3">
+                                                <p className="text-center text-sm"> هزینه ارسال برای خریدهای بالای {persianNumber(250)} هزار تومان در Huif shop
+                                                    رایگان است، در غیر اینصورت هزینه ارسال به این مبلغ اضافه می شود.</p>
+                                            </div>
+                                            <Button onClick={handleSubmit} className='w-full'>
+                                                ادامه ثبت سفارش
+                                            </Button>
+                                        </div>
+                                        <div>
+                                            <p className="text-dark text-xs ">محصولات موجود در سبد شما ثبت و رزرو نشده اند، برای ثبت سفارش مراحل
+                                                بعدی را تکمیل کنید. </p>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </section>
+                        <section className="container  max-md:block max-sm:block max-2xl:hidden max-xl:hidden max-lg:block lg:hidden ">
+                            <div className=" border border-gray-300 rounded-lg p-3">
 
-                    </section>
+                                <div className="flex justify-between items-center">
+                                    <p className=""> قیمت کالا ها : </p>
+                                    <p className="text-sm">{persianNumber(finalNum)} تومان</p>
+                                </div>
+                                <div className="flex justify-between items-center">
+                                    <p className="text-danger ">تخفیف کل:</p>
+                                    <p className="text-sm">{persianNumber(0)} تومان</p>
+                                </div>
+                                <div className="flex justify-between items-center ">
+                                    <p className="">جمع سبد خرید:</p>
+                                    <p className="text-center ">{persianNumber(finalNum)} تومان</p>
+                                </div>
+                                <div className="pt-3">
+                                    <p className="text-dark text-xs ">محصولات موجود در سبد شما ثبت و رزرو نشده اند، برای ثبت سفارش مراحل
+                                        بعدی را تکمیل کنید. </p>
+                                </div>
+                            </div>
+
+                        </section>
+                        <div className=" w-full max-md:block max-sm:block max-2xl:hidden max-xl:hidden max-lg:block lg:hidden border border-gray-300 rounded-lg p-5 mt-5 fixed z-3 bg-white left-0 bottom-0 right-0">
+                            <div className="flex justify-between">
+                            <div className="w-3/5">
+                                    <Button onClick={handleSubmit} className='w-full'>
+                                        ادامه ثبت سفارش
+                                    </Button>
+                                </div>
+                                <div className="flex flex-col gap-2 justify-center items-center">
+                                    <p className="">جمع سبد خرید:</p>
+                                    <p className="text-center text-xs ">{persianNumber(finalNum)} تومان</p>
+                                </div>
+                             
+                            </div>
+                        </div>
+                    </>
+
                 }
 
 

@@ -6,6 +6,7 @@ const { handleEnterComment, handleFetchComments } = require('../controller/comme
 const { handleAddToFavorit, handleGetFromFavorite, handleIsProduct } = require('../controller/favorites')
 const { handleGetProductByTag, handleGetSingleProduct } = require('../controller/products')
 const { handleAddProfile, handleAddFetchMyProfile } = require('../controller/profile')
+const { handleSearchProducts } = require('../controller/search')
 
 const router = express.Router()
 exports.handleCreatUser=router.post('/signup',handleSignup)
@@ -23,6 +24,10 @@ exports.handlefetchProfile=router.get('/profile',handleAddFetchMyProfile)
 exports.handleAddAndRemoveFavorite=router.post('/favorite',handleAddToFavorit)
 exports.handleGetFromFavorite=router.get('/favorite',handleGetFromFavorite)
 exports.handleisProduct=router.post('/favorite/isProduct',handleIsProduct)
+exports.handleSearch=router.post('/search',handleSearchProducts)
+
+
+
 
 
 

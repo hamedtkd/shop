@@ -5,7 +5,7 @@ import { ReceiptRefundIcon, TruckIcon } from "@heroicons/react/24/outline";
 export const BoxSection = () => {
     return (
         <div className="w-full flex justify-center items-center py-4 bg-slate-100 border-gray-500 mt-12 rounded-3xl">
-            <ul className="flex w-11/12  justify-evenly">
+            <ul className="flex w-11/12  justify-evenly flex-wrap">
                 <li>
                     <TitleAndLink linkName={'جزئيات ارسال رايگان'} linkTo='/about_post' title={'ارسال با پست'} icon={<TruckIcon className="h-6 w-6 text-primary" />} />
                 </li>
