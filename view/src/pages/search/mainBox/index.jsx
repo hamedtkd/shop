@@ -38,7 +38,7 @@ export const MainBox = () => {
         <>
             <div className="w-full   ">
                 <div className="flex gap-5 pb-4">
-                    <button onClick={() => setFilterHidden(current => !current)} className="flex items-center gap-3 text-primary">
+                    <button onClick={() => setFilterHidden(current => !current)} className=" items-center gap-3 text-primary max-md:flex max-sm:flex max-2xl:hidden max-xl:hidden max-lg:flex lg:hidden ">
                         <span>
                             <AdjustmentsHorizontalIcon class="h-6 w-6 text-gray-500" />
                         </span>
