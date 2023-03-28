@@ -138,7 +138,7 @@ export const Header = ({ basket }) => {
                                 onClick={() => setHidden(current != current)}
                                 icon={XMarkIcon}
                             >
-                                {/* <XMarkIcon class="h-12 w-12 text-gray-500 px" /> */}
+                                {/* <XMarkIcon className="h-12 w-12 text-gray-500 px" /> */}
                             </Sidebar.Item>
                             <Sidebar.Collapse className="text-start"
                                 icon={Bars3Icon}
@@ -195,7 +195,7 @@ export const Header = ({ basket }) => {
                             </Link>
                         </div>
                         <div>
-                            <QuestionMarkCircleIcon class="h-12 w-12 text-gray-700" />
+                            <QuestionMarkCircleIcon className="h-12 w-12 text-gray-700" />
                         </div>
                     </div>
                     <div className="pt-5 flex justify-between">

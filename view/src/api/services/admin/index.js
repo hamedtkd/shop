@@ -9,10 +9,10 @@ export const adminServices = (data) => {
         headers: {'Content-Type': 'multipart/form-data' }
         })
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
         })
         .catch(function (response) {
-            console.log(response);
+            // console.log(response);
         });
 
 }

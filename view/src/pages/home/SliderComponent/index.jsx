@@ -15,7 +15,7 @@ export default function SliderComponent() {
             try {
 
                 const res = await sliderServices();
-                console.log(res.data);
+                
                 setData(res.data.data);
             } catch (ex) {
                 toast.error(ex?.response?.data?.message);

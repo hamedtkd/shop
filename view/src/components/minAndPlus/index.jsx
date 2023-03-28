@@ -8,7 +8,7 @@ export const mindAndPlus = () => {
         const fetchData = async () => {
             try {
                 const res = await basketServices(product._id);
-                console.log(res.data.data);
+             
                 setNumber(res.data.data);
                 toast.success(res?.data?.message)
             } catch (ex) {
@@ -21,7 +21,7 @@ export const mindAndPlus = () => {
         const givData = async () => {
             try {
                 const res = await updateBasketServices(product._id);
-                console.log(res.data.data);
+               
                 setNumber(res.data.data);
             } catch (ex) {
                 toast.error(ex?.response?.data?.message);

@@ -1,17 +1,18 @@
-import { Link, ListButton } from "@/components";
-import { CheckCoxList } from "@/components/shared/CheckBoxList";
+import { CheckBoxList, Link, ListButton, persianNumber } from "@/components";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { current } from "tailwindcss/colors";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSearch } from "../useSearch";
 
 export const FilterBox = () => {
+    const { setFilter,setPrice ,price} = useSearch();
     const [hidden, setHidden] = useState(true);
     const [hidden2, setHidden2] = useState(true);
     const [hidden3, setHidden3] = useState(true);
+  
     const navigate = useNavigate()
-    // const [searchName, setSearchName] = useState();
-    useSearch()
+    const handleSortByBreand = (brand) => {
+        setFilter(brand);
+    }
 
     return (
         <>
@@ -25,9 +26,11 @@ export const FilterBox = () => {
                         </button>
                     </div>
                     <ul className={` ${hidden ? 'hidden' : 'block '}`} >
+                        <ListButton onClick={() => navigate('/search/product-list')} className='text-start text-sm text-gray-700' name='همه محصولات' />
                         <ListButton onClick={() => navigate('/search/sorom')} className='text-start text-sm text-gray-700' name='سرم پوست' />
                         <ListButton onClick={() => navigate('/search/mask')} className='text-start text-sm text-gray-700' name='ماسک صورت' />
                         <ListButton onClick={() => navigate('/search/cream')} className='text-start text-sm text-gray-700' name='کرم ضدآفتاب' />
+
 
                     </ul>
                     <div>
@@ -37,10 +40,9 @@ export const FilterBox = () => {
                         </button>
                     </div>
                     <ul className={`  ${hidden2 ? 'hidden' : 'block '}`}>
-                        <CheckCoxList englishName={'EBUG'} persianName='ایباگ'  />
-                        <CheckCoxList englishName={'La Faruer'} persianName='لا فرائور' onClick={(e)=>{console.log(e.target.value)}}  />
-                        <CheckCoxList englishName={'biaoqoa'} persianName='بایو آکوآ'  />
-                        <CheckCoxList englishName={'dipsens'} persianName='دیپ سنس'  />
+                        <CheckBoxList englishName={'EBUG'} persianName='ایباگ' onClick={(e) => { handleSortByBreand(e.target.value) }} />
+                        <CheckBoxList englishName={'La Faruer'} persianName='لا فرائور' onClick={(e) => { handleSortByBreand(e.target.value) }} />
+                        <CheckBoxList englishName={'biaoqoa'} persianName='بایو آکوآ' onClick={(e) => { handleSortByBreand(e.target.value) }} />
                     </ul>
                     <div>
                         <button onClick={() => setHidden3(current => !current)} type="button" className=" flex items-center justify-between w-full p-5 font-medium text-right border border-b-0 border-gray-200  focus:border  dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800">
@@ -49,7 +51,13 @@ export const FilterBox = () => {
                         </button>
                     </div>
                     <div className={`rounded-b-lg  ${hidden3 ? 'hidden' : 'block '}`}>
-                        <input type="range" />
+                        <div className="flex flex-col gap-5">
+
+                            <label htmlFor="rangeInput">
+                                {persianNumber(price)} تومان 
+                            </label>
+                            <input min={0} max={2000000}  name="rangeInput" type="range" onChange={(e)=>setPrice(e.target.value)} />
+                        </div>
 
                     </div>
                 </div>

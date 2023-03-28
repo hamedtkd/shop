@@ -1,29 +1,46 @@
-import { searchServices } from "@/api/services/search";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import {
+    searchServices
+} from "@/api/services/search";
+import {
+    useEffect,
+    useState
+} from "react";
+import {
+    useParams
+} from "react-router-dom";
+import {
+    toast
+} from "react-toastify";
 
 export const useSearch = () => {
     // const searchName=
     const [products, setProducts] = useState([]);
-    const { searchName } = useParams()
-
-
+    const {
+        searchName
+    } = useParams()
+    const [filter, setFilter] = useState([]);
+    const [sort, setSort] = useState([]);
+    const [price, setPrice] = useState(20000000);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await searchServices(searchName);
+                const res = await searchServices({searchName,filter,sort,price});
+               
                 setProducts(res.data.data[0]);
             } catch (ex) {
-                toast.error(ex?.response?.data?.message);
+                toast.error(ex ?.response ?.data ?.message);
             }
         };
         fetchData();
-       
-    }, [searchName]);
+
+    }, [searchName,filter,sort,price]);
 
     return {
         products,
+        setFilter,
+        setSort,
+        price,
+        setPrice
     }
 }
- 

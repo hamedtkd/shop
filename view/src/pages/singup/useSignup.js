@@ -41,7 +41,7 @@ export const useSignup = () => {
       toast.success(res.data.message);
       navigate('/signin')
     } catch (ex) {
-      console.log(ex?.response?.data);
+     
       toast.error(ex?.response?.data?.message);
     }
   }

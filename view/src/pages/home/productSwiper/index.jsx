@@ -48,7 +48,7 @@ export default function ProdctSwiper({ service, title, tag, ...props }) {
                     {data?.map((item) => {
                         return (
                             <SwiperSlide>
-                                <Card item={item} />
+                                <Card key={item.id} item={item} />
                             </SwiperSlide>
                         )
                     })
@@ -72,7 +72,7 @@ export default function ProdctSwiper({ service, title, tag, ...props }) {
                     {data?.map((item) => {
                         return (
                             <SwiperSlide>
-                                <Card item={item} />
+                                <Card key={item.id} item={item} />
                             </SwiperSlide>
                         )
                     })
@@ -96,7 +96,7 @@ export default function ProdctSwiper({ service, title, tag, ...props }) {
                     {data?.map((item) => {
                         return (
                             <SwiperSlide>
-                                <Card item={item} />
+                                <Card key={item.id} item={item} />
                             </SwiperSlide>
                         )
                     })

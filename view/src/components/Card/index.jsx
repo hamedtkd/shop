@@ -2,9 +2,9 @@ import { uploadsURL } from "@/api/constant";
 import { Link, persianNumber } from "../shared";
 import './index.css'
 
-export const Card = ({ item }) => {
+export const Card = ({key, item }) => {
     return (
-        <Link to={`/product/${item._id}`}>
+        <Link key={key} to={`/product/${item._id}`}>
             <div className="max-w-xs  w-custom bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
                 <div className='flex justify-center h-full p-3' >
                     <img className="rounded-t-lg  w-52" src={uploadsURL + item?.productPicture} alt="عکس محصول" />

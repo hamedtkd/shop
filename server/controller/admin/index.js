@@ -8,7 +8,6 @@ const moment = require('jalali-moment');
 const { getPath } = require("../../utils/getPath");
 
 const handleCreatProduct = async (req, res) => {
-    // console.log(req.files);
     const checkImage = (data) =>
         data ?.mimetype === "image/jpeg" ||
         data ?.mimetype === "image/png" ||

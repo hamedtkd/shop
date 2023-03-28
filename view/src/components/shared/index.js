@@ -6,6 +6,8 @@ export * from "./SearchInput"
 export * from "./ImageBox"
 export * from "./persianNumber"
 export * from "./ListButton"
+export * from "./CheckBoxList"
+
 
 
 

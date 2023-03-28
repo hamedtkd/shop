@@ -1,4 +1,4 @@
-export const CheckCoxList = ({ className,persianName, englishName, ...props }) => {
+export const CheckBoxList = ({ className,persianName, englishName, ...props }) => {
     return (
         <li className={`px-5 py-3 flex justify-between ${className}`} >
             <div className=" flex gap-3 items-center">

@@ -166,7 +166,7 @@ const handleAddFetchMyProfile = async (req, res) => {
         res.status(200).json({
             data: [isUserEmail]
         })
-        // console.log(isUserEmail.remove('password'));
+    
 
     } catch {
         res.status(404).json({
