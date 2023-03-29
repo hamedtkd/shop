@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -35,13 +35,18 @@ export default function ProdctSwiper({ service, title, tag, ...props }) {
             </div>
             <div className='max-lg:hidden max-md:hidden max-sm:hidden'>
                 <Swiper
-                    modules={[Navigation, Pagination, Scrollbar, A11y]}
-                    spaceBetween={20}
                     slidesPerView={4}
+                    modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+                    spaceBetween={20}
                     autoHeight={true}
-                    navigation
-                    pagination={{ clickable: true }}
-                    // scrollbar={{ draggable: true }}
+                    autoplay={{
+                        delay: 3500,
+                        disableOnInteraction: false,
+                    }}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    navigation={true}
                     className="my-10 card "
 
                 >
@@ -62,8 +67,14 @@ export default function ProdctSwiper({ service, title, tag, ...props }) {
                     spaceBetween={0}
                     slidesPerView={3}
                     autoHeight={true}
-                    navigation
-                    pagination={{ clickable: true }}
+                    autoplay={{
+                        delay: 3500,
+                        disableOnInteraction: false,
+                    }}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    navigation={true}
                     // scrollbar={{ draggable: true }}
                     className="my-10 card "
 
@@ -86,8 +97,14 @@ export default function ProdctSwiper({ service, title, tag, ...props }) {
                     spaceBetween={0}
                     slidesPerView={2}
                     autoHeight={true}
-                    navigation
-                    pagination={{ clickable: true }}
+                    autoplay={{
+                        delay: 3500,
+                        disableOnInteraction: false,
+                    }}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    navigation={true}
                     // scrollbar={{ draggable: true }}
                     className="my-10 card "
 
