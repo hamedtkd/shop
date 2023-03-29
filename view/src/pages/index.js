@@ -7,6 +7,8 @@ export * from './basket';
 export * from './user';
 export * from './search';
 export * from './productsList';
+export * from './support';
+
 
 
 

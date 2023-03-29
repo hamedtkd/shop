@@ -1,4 +1,4 @@
-import { Home, Product, Signin, Signup, CreatSlider,AdminPage, CreatProduct,Basket, User, ProductsList, Search } from "@/pages";
+import { Home, Product, Signin, Signup, CreatSlider,AdminPage, CreatProduct,Basket, User, ProductsList, Search, Support } from "@/pages";
 import { Shipping } from "@/pages/basket/shipping";
 
 
@@ -47,6 +47,10 @@ export const routes={
     SEARCH: {
         path: '/search/:searchName',
         element: <Search />,
+    },
+    SUPPORT: {
+        path: '/support',
+        element: <Support />,
     },
     // PRODUCTLIST:{
     //     path: '/search/product-list',
