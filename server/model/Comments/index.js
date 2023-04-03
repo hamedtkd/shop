@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Comments = mongoose.model('comments', {
-      userName: {
+    userName: {
         type: String,
         require: true
     },
@@ -12,6 +12,10 @@ const Comments = mongoose.model('comments', {
     productID: {
         type: String,
         require: true
+    },
+    star: {
+        type: Number,
+        require: true,
     },
     createdAt: {
         type: String,

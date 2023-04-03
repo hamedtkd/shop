@@ -5,7 +5,9 @@ const {
 const sharp = require("sharp");
 
 const moment = require('jalali-moment');
-const { getPath } = require("../../utils/getPath");
+const {
+    getPath
+} = require("../../utils/getPath");
 
 const handleCreatProduct = async (req, res) => {
     const checkImage = (data) =>
@@ -13,17 +15,22 @@ const handleCreatProduct = async (req, res) => {
         data ?.mimetype === "image/png" ||
         data ?.mimetype === "image/jpg";
 
-    const productPicture = req.files.productPicture
+    const productPicture = req ?.files ?.productPicture
+    if (!productPicture) return res.status(400).json({
+        message: 'لطفا عکس محصول را اضافه کنید'
+    })
     if (checkImage(productPicture)) {
         await sharp(productPicture.data)
-          .jpeg({ quality: 60 })
-          .toFile(getPath(`public/uploads/${productPicture.md5 + productPicture.name}.jpg`))
-          .catch((err) => console.log(err));
-      } else {
+            .jpeg({
+                quality: 60
+            })
+            .toFile(getPath(`public/uploads/${productPicture.md5 + productPicture.name}.jpg`))
+            .catch((err) => console.log(err));
+    } else {
         return res.status(400).json({
-          errors: ["عکس با فرمت png یا jpg  آپلود شود !"],
+            errors: ["عکس با فرمت png یا jpg  آپلود شود !"],
         });
-      }
+    }
 
     const {
         productName,
@@ -66,7 +73,7 @@ const handleCreatProduct = async (req, res) => {
     const jalaliDate = moment(date.toLocaleDateString(), 'MM/DD/YYYY').locale('fa').format('YYYY/MM/DD');
 
     const newProduct = new Product({
-        productPicture:productPicture?productPicture.md5 + productPicture.name + '.jpg':'',
+        productPicture: productPicture ?productPicture.md5 + productPicture.name + '.jpg' : '',
         productName,
         productDesc,
         productPrice,

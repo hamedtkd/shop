@@ -15,7 +15,7 @@ const handleSearchProducts = async (req, res) => {
         isProduct = await Product.find({})
     } else if (searchName === 'most-populer') {
         isProduct = await Product.find({
-            productTag: 'پرفروشترین'
+            productTag: 'پرفروشترین' 
         })
     } else if (searchName === 'offer') {
         isProduct = await Product.find({

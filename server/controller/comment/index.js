@@ -14,8 +14,15 @@ const {
 const handleEnterComment = async (req, res) => {
     const {
         comment,
-        productId
+        productId,
+        star
     } = req.body
+    if (!comment) return res.status(400).json({
+        message: 'نظر خود را در قسمت مربوط را وارد کنید',
+    })
+    if (!star) return res.status(400).json({
+        message: 'امتیاز خود را در قسمت مربوط را وارد کنید',
+    })
 
     const {
         authorization
@@ -36,8 +43,9 @@ const handleEnterComment = async (req, res) => {
             email: data.email
         })
         const newComment = new Comments({
-            userName:user?user.userName: data.email,
+            userName: user ? user.userName : data.email,
             comment: comment,
+            star:star,
             productID: productId,
             jalaliDate
         })
@@ -57,12 +65,12 @@ const handleFetchComments = async (req, res) => {
     const {
         data
     } = req.body
-    const witchProduct = await Comments.find({
+    const whichProduct = await Comments.find({
         productID: data
     })
     res.status(200).json({
         message: 'کامنت های دیگران پیدا شد',
-        data: [witchProduct]
+        data: [whichProduct]
     })
 
 }
