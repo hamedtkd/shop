@@ -16,7 +16,7 @@ import { adminServices } from "@/api/services/admin";
       productName: yup.string().required('نام محصول را وارد کنید'),
       productDesc: yup.string().required("توضیحات محصول را وارد کنید"),
       productPrice: yup.string().required("قیمت محصول را وارد کنید"),
-      productTag :yup.string().required("تگ محصول را وارد کنید"),  
+      // productTag :yup.string().required("تگ محصول را وارد کنید"),  
       productFamily :yup.string().required("دسته محصول را وارد کنید"),  
       productEnglishName :yup.string().required("نام انگلیسی محصول را وارد کنید"),  
       productBrand :yup.string().required("ّبرند محصول را وارد کنید"),  
@@ -39,18 +39,7 @@ import { adminServices } from "@/api/services/admin";
       resolver: yupResolver(createProuductSchema)
     });
 
-  
-    const createProuduct = async (data) => {
-      try {
-        const res = await adminServices(data);
-        toast.success(res.data.message);
-      } catch (ex) {
-        // console.log(ex?.response?.data);
-        toast.error(ex?.response?.data?.message);
-      }
-    }
     return {
-      createProuduct,
       errors,
       register,
       handleSubmit

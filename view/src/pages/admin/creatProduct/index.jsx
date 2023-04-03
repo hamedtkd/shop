@@ -1,6 +1,6 @@
 import { BASE_INSTANCE } from "@/api/constant";
 import { adminServices } from "@/api/services/admin";
-import { Textfield } from "@/components";
+import { Select, Textfield } from "@/components";
 import axios from "axios";
 import { Button } from "flowbite-react";
 import { useCallback, useState } from "react";
@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { useAdmin } from "./useAdmin";
 
 export const CreatProduct = () => {
-    const { createProuduct,
+    const {
         errors,
         register,
         handleSubmit,
@@ -35,7 +35,6 @@ export const CreatProduct = () => {
 
 
     const handelCraetProduct = async (data) => {
-
         const formData = new FormData()
         formData.append('productPicture', file)
         formData.append('productName', data.productName)
@@ -46,25 +45,14 @@ export const CreatProduct = () => {
         formData.append('productFamily', data.productFamily)
         formData.append('productBrand', data.productBrand)
 
+        try {
+            const res = await adminServices(formData);
+            toast.success(res.data.message);
+        } catch (ex) {
+            // console.log(ex?.response?.data);
+            toast.error(ex?.response?.data?.message);
+        }
 
-        // adminServices(formData)
-        BASE_INSTANCE({
-            method: 'post',
-            url: '/admin',
-            data: formData,
-            headers: { 'Content-Type': 'multipart/form-data' }
-        })
-            .then(function (response) {
-                //handle success
-                toast.success(response.data.message)
-                // console.log(response.data);
-            })
-            .catch(function (response) {
-                // //handle error
-                console.log(response.response.data.errors);
-                toast.error(response.response.data.errors[0])
-
-            });
     }
 
     return (
@@ -98,14 +86,8 @@ export const CreatProduct = () => {
                             type="text"
                             placeholder='englishName'
                         />
-                            <Textfield
-                            validation={{ ...register('productFamily') }}
-                            lable='دسته محصول'
-                            error={errors.productFamily?.message}
-                            type="text"
-                            placeholder='دسته محصول '
-                        />
-                           <Textfield
+
+                        <Textfield
                             validation={{ ...register('productBrand') }}
                             lable='برند محصول'
                             error={errors.productBrand?.message}
@@ -127,19 +109,36 @@ export const CreatProduct = () => {
                             type="number"
                             placeholder="قیمت محصول"
                         />
-                        <Textfield
+                        <Select
+                            forLabale={'productFamily'}
+                            label={'دسته محصول'}
+                            validation={{ ...register('productFamily') }}
+                            error={errors.productFamily?.message}
+                            name="productFamily"
+                            id="productFamily">
+                            <option value="cream">کرم</option>
+                            <option value="sorom">سرم پوست</option>
+                            <option value="jel">ژل</option>
+                            <option value="mask">ماسک</option>
+                        </Select>
+                        <Select
+                            forLabale={'productTag'}
+                            label={'تگ محصول'}
                             validation={{ ...register('productTag') }}
-                            lable="تگ محصول "
                             error={errors.productTag?.message}
-                            type="text"
-                            placeholder="تگ محصول"
-                        />
+                            name="productTag"
+                            id="productTag">
+                            <option value="پرفروشترین">پرفروشترین</option>
+                            <option value="پربازدیدترین">پربازدیدترین</option>
+                            <option value="offer">تخفیف ها</option>
+                        </Select>
 
 
                     </div>
 
                     <div className='flex justify-center  hover:shadow-red-900'>
                         <Button
+
                             type="submit"
                             className="w-full group relative flex  justify-center rounded-md border border-transparent bg-primary py-3 px-4 text-sm font-medium text-white hover:shadow-blue-900 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
 
