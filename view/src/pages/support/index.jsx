@@ -5,10 +5,10 @@ export const Support = () => {
         <>
             <Header />
             <main className="container">
-                <div className="pt-3 pe-4 flex border-b mb-6">
+                <div className="pt-3 pe-4 pr-3 flex border-b mb-6">
                     <p className=" title">پشتیبانی </p>
                 </div>
-                <div className="flex flex-col gap-8 pb-6">
+                <div className="flex flex-col gap-8 pb-6 pr-3">
                     <div className="flex flex-col gap-3" >
                         <h3 className="font-bold">آدرس دفتر مرکزی</h3>
                         <p>شیراز</p>

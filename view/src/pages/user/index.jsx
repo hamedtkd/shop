@@ -18,7 +18,7 @@ export function User() {
                 <div className='flex'>
                     <div className='w-1/4'>
                         <ul className='border border-gray-500 rounded-lg'>
-                            <ListButton className={'rounded-t-lg'} name={"پیگیری سفارش"} />
+                            <ListButton className={'rounded-t-lg'} onClick={() => setMain('order-tracking')} name={"پیگیری سفارش"} />
                             <ListButton onClick={() => setMain('basket')} name={"خرید های من"} />
                             <ListButton onClick={() => setMain('favorite')} name={"علاقه مندی ها"} />
                             <ListButton onClick={() => setMain('profile')} name={"پروفایل من"} />
@@ -28,18 +28,19 @@ export function User() {
                     </div>
                     {(
                         () => {
-                        switch (main) {
-                            case 'profile':
-                                return <Profile />
-                            case 'favorite':
-                                return <MyFavorite />
-                            case 'basket':
-                                return <div>baket</div>
-                            default:
-                                // setProfile(true)
-                                return <Profile />
+                            switch (main) {
+                                case 'profile':
+                                    return <Profile />
+                                case 'favorite':
+                                    return <MyFavorite />
+                                case 'basket':
+                                    return <div className='m-auto'>شما تا کنون خریدی نداشتید</div>
+                                case 'order-tracking':
+                                    return <div className='m-auto'>شما تا کنون خریدی نداشتید</div>
+                                default:
+                                    return <Profile />
+                            }
                         }
-                    }
                     )()}
                 </div>
             </main>

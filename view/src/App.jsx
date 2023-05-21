@@ -4,11 +4,10 @@ import { Route, Routes } from 'react-router-dom'
 import { routes } from './routes'
 import { useAuth } from './hooks/useAuth';
 import Cookies from 'js-cookie';
-import { BASE_INSTANCE } from "@/api/constant"
+// import { BASE_INSTANCE } from "@/api/constant"
 import { useEffect } from 'react';
-
-
-
+import { BASE_INSTANCE } from './api/constant';
+// import { BASE_INSTANCE } from 'api/constant';
 
 function App() {
 const token = Cookies.get('token')

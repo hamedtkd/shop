@@ -1,14 +1,15 @@
 import { Card, Card2, CheckBoxList, ListButton, persianNumber } from "@/components";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSearch } from "../useSearch";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
+import { store } from "@/context";
 
 
 export const MainBox = () => {
-
-    const { products, setFilter, setSort,setPrice,price } = useSearch();
+    const { products } = useContext(store)
+    const { setFilter, setSort,setPrice,price } = useSearch();
     const [sortProducts, setSortProducts] = useState(false);
     const [filterHidden, setFilterHidden] = useState(false);
     const [hidden, setHidden] = useState(true);
@@ -24,10 +25,10 @@ export const MainBox = () => {
     const handleSortByBreand = (brand) => {
         setFilter(brand)
     }
-    const handleSortByDate = () => {
-        const sortProductsByDate = products?.sort((a, b) => b.createdAt - a.createdAt)
-        setSortProducts(sortProductsByDate)
-    }
+    // const handleSortByDate = () => {
+    //     const sortProductsByDate = products?.sort((a, b) => b.createdAt - a.createdAt)
+    //     setSortProducts(sortProductsByDate)
+    // }
 
     // useEffect(() => {
     //     setSortProducts()
@@ -65,7 +66,7 @@ export const MainBox = () => {
                 <div className="max-md:block max-sm:block max-2xl:hidden max-xl:hidden max-lg:block lg:hidden border rounded-lg flex flex-wrap justify-center gap-5">
                     {sortProducts ? sortProducts?.map((product) => { return <Card item={product} /> }) :
                         products?.map((product) => {
-                            return <Card2 item={product} />
+                            return <Card2 key={product._id} item={product} />
                         })
                     }
 
@@ -125,11 +126,8 @@ export const MainBox = () => {
                             </div>
 
                         </div>
-
                         : ''
                 }
-
-
             </div>
 
 

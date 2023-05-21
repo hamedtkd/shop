@@ -1,7 +1,9 @@
 import {
     searchServices
 } from "@/api/services/search";
+import { store } from "@/context";
 import {
+    useContext,
     useEffect,
     useState
 } from "react";
@@ -13,8 +15,9 @@ import {
 } from "react-toastify";
 
 export const useSearch = () => {
-    // const searchName=
-    const [products, setProducts] = useState([]);
+    const { products, setProducts } = useContext(store)
+
+    // const [products, setProducts] = useState([]);
     const {
         searchName
     } = useParams()
@@ -26,18 +29,15 @@ export const useSearch = () => {
         const fetchData = async () => {
             try {
                 const res = await searchServices({searchName,filter,sort,price});
-               
                 setProducts(res.data.data[0]);
             } catch (ex) {
                 toast.error(ex ?.response ?.data ?.message);
             }
         };
         fetchData();
-
     }, [searchName,filter,sort,price]);
 
     return {
-        products,
         setFilter,
         setSort,
         price,

@@ -50,7 +50,10 @@ export const Header = ({ basket }) => {
                             <Link to='/home'>
                                 <Logo />
                             </Link>
-                            <SearchInput onBlur={() => handleStopSerach()} onFocus={(e) => handleSerach(e)} className='w-4/5' />
+                            <SearchInput  onSubmit={(e) => {
+
+                                e.preventDefault();
+                                handleSerach(e)}}  className='w-4/5' />
                         </div>
                         <div className="flex justify-end gap-7 w-1/5">
                             <button href className='bg-transparent relative user-section'>
@@ -102,13 +105,13 @@ export const Header = ({ basket }) => {
                                 </div>
                             </li>
                             <li >
-                                <Link className='flex gap-3 items-center' to = {`${MainUrl}search/offer`}>
+                                <Link className='flex gap-3 items-center' to={`${MainUrl}search/offer`}>
                                     <ReceiptPercentIcon className="h-6 w-6 text-gray-500" />
                                     تخفیف ها و پیشنهاد ما
                                 </Link>
                             </li>
                             <li>
-                                <Link className='flex gap-3 items-center' to = {`${MainUrl}search/most-populer`}>
+                                <Link className='flex gap-3 items-center' to={`${MainUrl}search/most-populer`}>
                                     <FireIcon className="h-6 w-6 text-gray-500" />
                                     پرفروشترین ها
                                 </Link>
@@ -123,7 +126,7 @@ export const Header = ({ basket }) => {
                         <Link href='/user' className="flex gap-3">
                             <MapPinIcon className="h-6 w-6 text-gray-500" />
                             <p>
-                                ارسال به {city}
+                                ارسال به {city ? city : ''}
                             </p>
                         </Link>
                     </div>
@@ -159,14 +162,14 @@ export const Header = ({ basket }) => {
                             <Sidebar.Item
                                 icon={ReceiptPercentIcon}
                             >
-                                <Link className='flex gap-3 items-center' to = {`${MainUrl}search/most-populer`}>
+                                <Link className='flex gap-3 items-center' to={`${MainUrl}search/offer`}>
                                     تخفیف ها و پیشنهاد ما
                                 </Link>
                             </Sidebar.Item>
                             <Sidebar.Item
                                 icon={FireIcon}
                             >
-                                <Link className='flex gap-3 items-center' to = {`${MainUrl}search/most-populer`}>
+                                <Link className='flex gap-3 items-center' to={`${MainUrl}search/most-populer`}>
                                     پرفروشترین ها
                                 </Link>
                             </Sidebar.Item>
@@ -195,7 +198,10 @@ export const Header = ({ basket }) => {
                             </Link>
                         </div>
                         <div>
-                            <QuestionMarkCircleIcon className="h-12 w-12 text-gray-700" />
+                            <Link to='/support'>
+                                <QuestionMarkCircleIcon className="h-12 w-12 text-gray-700" />
+
+                            </Link>
                         </div>
                     </div>
                     <div className="pt-5 flex justify-between">

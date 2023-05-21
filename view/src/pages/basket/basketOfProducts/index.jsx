@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./index.css"
 import { useBasket } from "./useBasket";
+import { BasketCard } from "@/components/BasketCard";
 
 export const BasketOfProduct = () => {
     // const [finalNum, setFinalNum] = useState(0);
@@ -74,52 +75,9 @@ export const BasketOfProduct = () => {
                         <section className="container">
                             <div className=" flex justify-between gap-3 mt-3 " >
                                 <div className="flex flex-col gap-3  w-full  pb-3">
-                                    {data?.map((p) => {
+                                    {data?.map((product) => {
                                         return (
-                                            <div key={p._id} className="flex  border rounded-md  px-3 pb-3  ">
-                                                <div className="w-full flex   ">
-                                                    <div className="flex flex-col items-center justify-between w-1/4  max-md:w-1/2">
-                                                        <div>
-                                                            <img src={uploadsURL + p.productPicture} alt="عکس محصول" width="100%" />
-                                                        </div>
-                                                        <div className="w-28 flex items-center gap-2 border p-2 rounded-md  border-1 mt-4" id="${id}">
-                                                            <button onClick={() => handelPluss(p.productId)} className="border-0 bg-transparent w-1/3" id="plus">+</button>
-                                                            <p className="px-3" id="number">{persianNumber(p.number)}</p>
-                                                            <button onClick={() => handelmin(p.productId)} className="border-0 bg-transparent w-1/3" id="mines">-</button>
-                                                        </div>
-                                                    </div>
-                                                    <div className="flex flex-col justify-between  gap-3 w-full pt-4">
-                                                        <div className="flex flex-col gap-3 text-dark">
-                                                            <p className=" text-xl"> {p.productName}</p>
-                                                            <p className="text-sm">  {p.productEnglishName}</p>
-                                                            <div className="flex gap-1 items-center">
-                                                                <p className="text-xl">برند : </p>
-                                                                <p className="text-lg"> {p?.productBrand} </p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="w-full justify-items-end flex flex-col gap-2">
-                                                            <div className="flex justify-between flex-wrap  ">
-                                                                <p>قیمت واحد:</p>
-                                                                <div className="flex gap-1">
-                                                                    <p >{persianNumber(p?.productPrice)} </p>
-                                                                    <p>تومان </p>
-                                                                </div>
-
-                                                            </div>
-                                                            <hr />
-                                                            <div className="flex justify-between flex-wrap  ">
-                                                                <p className="text-xl">قیمت نهایی:</p>
-                                                                <div className="flex gap-1">
-                                                                    <p className="text-xl"> {persianNumber((p?.productPrice) * p.number)} </p>
-                                                                    <p>تومان </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                            <BasketCard key={product.productId} item={product} handelmin={handelmin} handelPluss={handelPluss} />
                                         )
                                     })}
                                 </div>

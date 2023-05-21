@@ -4,6 +4,7 @@ import { Button, Textfield ,Card} from "@/components";
 import { data } from "autoprefixer";
 
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 
 export const MyFavorite = () => {
@@ -24,12 +25,14 @@ export const MyFavorite = () => {
     }, []);
     return (
         <div className='w-3/4 px-5 flex flex-wrap gap-3'>
-            {data?.map((item=>{
+            {data?data.map((item=>{
                 item._id = item.productId
                 return(
                     <Card item={item}/>
                 )
-            }))}
+            })):
+            <p className="m-auto">شما محصولی به لیست علاقه خود اضافه نکردید</p>
+            }
         </div>
     );
 }
